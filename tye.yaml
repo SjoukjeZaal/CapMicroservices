@@ -1,0 +1,18 @@
+# tye application configuration file
+# read all about it at https://github.com/dotnet/tye
+#
+# when you've given us a try, we'd love to know what you think:
+#    https://aka.ms/AA7q20u
+#
+name: capmicroservices
+services:
+- name: musicapi
+  project: MusicAPI/MusicAPI.csproj
+  bindings:
+    - port: 6301
+      connectionString: "${host}:${port}"
+- name: musicapp
+  project: MusicApp/MusicApp.csproj
+  bindings:
+    - port: 6300
+      connectionString: "${host}:${port}"

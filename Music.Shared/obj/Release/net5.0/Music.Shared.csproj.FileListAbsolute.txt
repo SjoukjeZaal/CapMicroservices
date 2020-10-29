@@ -1,0 +1,12 @@
+C:\Users\SjoukjeZaal\GitHub\CapMicroservices\Music.Shared\bin\Release\net5.0\Music.Shared.deps.json
+C:\Users\SjoukjeZaal\GitHub\CapMicroservices\Music.Shared\bin\Release\net5.0\Music.Shared.dll
+C:\Users\SjoukjeZaal\GitHub\CapMicroservices\Music.Shared\bin\Release\net5.0\ref\Music.Shared.dll
+C:\Users\SjoukjeZaal\GitHub\CapMicroservices\Music.Shared\bin\Release\net5.0\Music.Shared.pdb
+C:\Users\SjoukjeZaal\GitHub\CapMicroservices\Music.Shared\obj\Release\net5.0\Music.Shared.csprojAssemblyReference.cache
+C:\Users\SjoukjeZaal\GitHub\CapMicroservices\Music.Shared\obj\Release\net5.0\Music.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\SjoukjeZaal\GitHub\CapMicroservices\Music.Shared\obj\Release\net5.0\Music.Shared.AssemblyInfoInputs.cache
+C:\Users\SjoukjeZaal\GitHub\CapMicroservices\Music.Shared\obj\Release\net5.0\Music.Shared.AssemblyInfo.cs
+C:\Users\SjoukjeZaal\GitHub\CapMicroservices\Music.Shared\obj\Release\net5.0\Music.Shared.csproj.CoreCompileInputs.cache
+C:\Users\SjoukjeZaal\GitHub\CapMicroservices\Music.Shared\obj\Release\net5.0\Music.Shared.dll
+C:\Users\SjoukjeZaal\GitHub\CapMicroservices\Music.Shared\obj\Release\net5.0\ref\Music.Shared.dll
+C:\Users\SjoukjeZaal\GitHub\CapMicroservices\Music.Shared\obj\Release\net5.0\Music.Shared.pdb
