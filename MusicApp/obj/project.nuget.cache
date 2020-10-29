@@ -1,15 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "7WRcamm6nl6aUgRbEw23yg4Bl33WWiT40Y0fgshBumJBlBGHmKD6ypIuw0J6jPtPDQvcXoA1/puvIiJ4i5kHxQ==",
+  "dgSpecHash": "5Ch+Y6ZDsx8kuNbvmrzIlInd8xrP9b0QSpHTM8TLzyiO1PyVYtRLCEePTdqlqlmxRjpLS8mDGBxM0cI8kEwDSQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\SjoukjeZaal\\GitHub\\CapMicroservices\\MusicApp\\MusicApp.csproj",
+  "projectFilePath": "C:\\src\\CapMicroservices\\MusicApp\\MusicApp.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\SjoukjeZaal\\.nuget\\packages\\microsoft.extensions.configuration\\2.1.1\\microsoft.extensions.configuration.2.1.1.nupkg.sha512",
-    "C:\\Users\\SjoukjeZaal\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\2.1.1\\microsoft.extensions.configuration.abstractions.2.1.1.nupkg.sha512",
-    "C:\\Users\\SjoukjeZaal\\.nuget\\packages\\microsoft.extensions.primitives\\2.1.1\\microsoft.extensions.primitives.2.1.1.nupkg.sha512",
-    "C:\\Users\\SjoukjeZaal\\.nuget\\packages\\microsoft.tye.extensions.configuration\\0.4.0-alpha.20371.1\\microsoft.tye.extensions.configuration.0.4.0-alpha.20371.1.nupkg.sha512",
-    "C:\\Users\\SjoukjeZaal\\.nuget\\packages\\system.memory\\4.5.1\\system.memory.4.5.1.nupkg.sha512",
-    "C:\\Users\\SjoukjeZaal\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.1\\system.runtime.compilerservices.unsafe.4.5.1.nupkg.sha512"
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.extensions.configuration\\2.1.1\\microsoft.extensions.configuration.2.1.1.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.extensions.configuration.abstractions\\2.1.1\\microsoft.extensions.configuration.abstractions.2.1.1.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.extensions.primitives\\2.1.1\\microsoft.extensions.primitives.2.1.1.nupkg.sha512",
+    "C:\\Users\\rvandegr\\.nuget\\packages\\microsoft.tye.extensions.configuration\\0.4.0-alpha.20371.1\\microsoft.tye.extensions.configuration.0.4.0-alpha.20371.1.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.memory\\4.5.1\\system.memory.4.5.1.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.runtime.compilerservices.unsafe\\4.5.1\\system.runtime.compilerservices.unsafe.4.5.1.nupkg.sha512"
   ],
   "logs": []
 }

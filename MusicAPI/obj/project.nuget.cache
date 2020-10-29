@@ -1,21 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "AuY9eemQAENGNHr6xQ/K1XQoKSQ8cxA2Xezm+PYWZNkSMxWNG155/zGa2HaBUW2CaCxPPYLEkELzrkq4PxNRjw==",
+  "dgSpecHash": "Y0JbmJxGVDeWZz4tlWOBKL/28YUPyssDL03lwk009kXVXtj0n8nbNPoXhBincTfeFYBax92lUU/ojmGyh+5hxA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\SjoukjeZaal\\GitHub\\CapMicroservices\\MusicAPI\\MusicAPI.csproj",
+  "projectFilePath": "C:\\src\\CapMicroservices\\MusicAPI\\MusicAPI.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\SjoukjeZaal\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
-    "C:\\Users\\SjoukjeZaal\\.nuget\\packages\\microsoft.extensions.configuration\\2.1.1\\microsoft.extensions.configuration.2.1.1.nupkg.sha512",
-    "C:\\Users\\SjoukjeZaal\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\2.1.1\\microsoft.extensions.configuration.abstractions.2.1.1.nupkg.sha512",
-    "C:\\Users\\SjoukjeZaal\\.nuget\\packages\\microsoft.extensions.primitives\\2.1.1\\microsoft.extensions.primitives.2.1.1.nupkg.sha512",
-    "C:\\Users\\SjoukjeZaal\\.nuget\\packages\\microsoft.openapi\\1.1.4\\microsoft.openapi.1.1.4.nupkg.sha512",
-    "C:\\Users\\SjoukjeZaal\\.nuget\\packages\\microsoft.tye.extensions.configuration\\0.4.0-alpha.20371.1\\microsoft.tye.extensions.configuration.0.4.0-alpha.20371.1.nupkg.sha512",
-    "C:\\Users\\SjoukjeZaal\\.nuget\\packages\\swashbuckle.aspnetcore\\5.5.1\\swashbuckle.aspnetcore.5.5.1.nupkg.sha512",
-    "C:\\Users\\SjoukjeZaal\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.5.1\\swashbuckle.aspnetcore.swagger.5.5.1.nupkg.sha512",
-    "C:\\Users\\SjoukjeZaal\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.5.1\\swashbuckle.aspnetcore.swaggergen.5.5.1.nupkg.sha512",
-    "C:\\Users\\SjoukjeZaal\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.5.1\\swashbuckle.aspnetcore.swaggerui.5.5.1.nupkg.sha512",
-    "C:\\Users\\SjoukjeZaal\\.nuget\\packages\\system.memory\\4.5.1\\system.memory.4.5.1.nupkg.sha512",
-    "C:\\Users\\SjoukjeZaal\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.1\\system.runtime.compilerservices.unsafe.4.5.1.nupkg.sha512"
+    "C:\\Users\\rvandegr\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\rvandegr\\.nuget\\packages\\microsoft.openapi\\1.1.4\\microsoft.openapi.1.1.4.nupkg.sha512",
+    "C:\\Users\\rvandegr\\.nuget\\packages\\swashbuckle.aspnetcore\\5.5.1\\swashbuckle.aspnetcore.5.5.1.nupkg.sha512",
+    "C:\\Users\\rvandegr\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.5.1\\swashbuckle.aspnetcore.swagger.5.5.1.nupkg.sha512",
+    "C:\\Users\\rvandegr\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.5.1\\swashbuckle.aspnetcore.swaggergen.5.5.1.nupkg.sha512",
+    "C:\\Users\\rvandegr\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.5.1\\swashbuckle.aspnetcore.swaggerui.5.5.1.nupkg.sha512"
   ],
   "logs": []
 }

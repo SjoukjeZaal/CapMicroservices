@@ -10,3 +10,15 @@ C:\Users\SjoukjeZaal\GitHub\CapMicroservices\Music.Shared\obj\Debug\net5.0\Music
 C:\Users\SjoukjeZaal\GitHub\CapMicroservices\Music.Shared\obj\Debug\net5.0\Music.Shared.dll
 C:\Users\SjoukjeZaal\GitHub\CapMicroservices\Music.Shared\obj\Debug\net5.0\ref\Music.Shared.dll
 C:\Users\SjoukjeZaal\GitHub\CapMicroservices\Music.Shared\obj\Debug\net5.0\Music.Shared.pdb
+C:\CapMicroservices\Music.Shared\bin\Debug\net5.0\Music.Shared.deps.json
+C:\CapMicroservices\Music.Shared\bin\Debug\net5.0\Music.Shared.dll
+C:\CapMicroservices\Music.Shared\bin\Debug\net5.0\ref\Music.Shared.dll
+C:\CapMicroservices\Music.Shared\bin\Debug\net5.0\Music.Shared.pdb
+C:\CapMicroservices\Music.Shared\obj\Debug\net5.0\Music.Shared.csprojAssemblyReference.cache
+C:\CapMicroservices\Music.Shared\obj\Debug\net5.0\Music.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\CapMicroservices\Music.Shared\obj\Debug\net5.0\Music.Shared.AssemblyInfoInputs.cache
+C:\CapMicroservices\Music.Shared\obj\Debug\net5.0\Music.Shared.AssemblyInfo.cs
+C:\CapMicroservices\Music.Shared\obj\Debug\net5.0\Music.Shared.csproj.CoreCompileInputs.cache
+C:\CapMicroservices\Music.Shared\obj\Debug\net5.0\Music.Shared.dll
+C:\CapMicroservices\Music.Shared\obj\Debug\net5.0\ref\Music.Shared.dll
+C:\CapMicroservices\Music.Shared\obj\Debug\net5.0\Music.Shared.pdb
