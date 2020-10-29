@@ -7,12 +7,6 @@
 name: capmicroservices
 services:
 - name: musicapi
-  project: MusicAPI/MusicAPI.csproj
-  bindings:
-    - port: 6301
-      connectionString: "${host}:${port}"
+  project: MusicAPI/MusicAPI.csproj  
 - name: musicapp
   project: MusicApp/MusicApp.csproj
-  bindings:
-    - port: 6300
-      connectionString: "${host}:${port}"
