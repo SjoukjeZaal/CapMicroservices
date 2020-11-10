@@ -1,4 +1,7 @@
-﻿using Music.Shared;
+﻿using Dapr.Client;
+using Dapr.Client.Http;
+using Microsoft.Extensions.Logging;
+using Music.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,21 +13,21 @@ namespace MusicApp
 {
     public class AlbumClient
     {
-        private readonly HttpClient _httpClient;
+        private readonly DaprClient _daprClient;
+        private readonly ILogger<AlbumClient> logger;
         private readonly JsonSerializerOptions serializerOptions = new JsonSerializerOptions
         {
             PropertyNameCaseInsensitive = true,
             PropertyNamingPolicy = JsonNamingPolicy.CamelCase
         };
 
-        public AlbumClient(HttpClient httpClient)
-            => _httpClient = httpClient;
-
-        public async Task<Album[]> GetAlbumsAsync()
+        public AlbumClient(DaprClient daprClient, ILogger<AlbumClient> logger)
         {
-            var response = await _httpClient.GetAsync("/api/Album");
-            var stream = await response.Content.ReadAsStreamAsync();
-            return await JsonSerializer.DeserializeAsync<Album[]>(stream, serializerOptions);
+            _daprClient = daprClient;
+            this.logger = logger;
         }
+
+        public async Task<Album[]> GetAlbumsAsync() => await _daprClient.InvokeMethodAsync<Album[]>("musicapi", "albums", new HTTPExtension { Verb = HTTPVerb.Get });
+
     }
 }

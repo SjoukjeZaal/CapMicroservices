@@ -26,21 +26,9 @@ namespace MusicApp
             services.AddRazorPages(options =>
             {
                 options.Conventions.AddPageRoute("/Albums", "");
-            });
+            }).AddDapr();
 
-            //services.AddHttpClient<AlbumClient>(client =>
-            //    client.BaseAddress = new Uri("http://localhost:44322"));
-
-            //SZ - Add Tye
-            //GetServiceUri is an extension method to extend the IConfiguration interface to get based 
-            //on the name of the service the host and port number for the service. Starting tye, environmental 
-            //variables with the name service:{name}:host and service:{name}:port are configured, and GetServiceUri 
-            //can be used to easily connect these values to return a URL. For using this API, the NuGet package Microsoft.Tye.Extensions.Configuration need to be referenced.
-            services.AddHttpClient<AlbumClient>(client =>
-            {
-                client.BaseAddress = Configuration.GetServiceUri("musicapi");
-            });
-            //SZ - End Tye
+            services.AddSingleton<AlbumClient>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,7 +46,6 @@ namespace MusicApp
 
             }
 
-            app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();

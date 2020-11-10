@@ -1,0 +1,97 @@
+version: "3"
+services:
+  ############################
+  # Music Store Web App + Dapr sidecar
+  ############################
+  musicstoreweb:
+    build:
+      context: ./
+      dockerfile: ./MusicApp/Dockerfile
+    ports:
+      - "8080:80"
+    environment:
+      - DAPR_GRPC_PORT=50002
+    # depends_on:
+    # - redis
+    # - placement
+    networks:
+      - musicnet
+  musicstoreweb-dapr:
+    image: "daprio/daprd:edge"
+    command:
+      [
+        "./daprd",
+        "-app-id",
+        "musicstoreweb",
+        "-app-port",
+        "80",
+        "-placement-host-address",
+        "placement:50006",
+        "-dapr-grpc-port",
+        "50002",
+        "-components-path",
+        "/components",
+      ]
+    volumes:
+      - "./components/:/components"
+    depends_on:
+      - musicstoreweb
+    network_mode: "service:musicstoreweb"
+  ############################
+  # Music API + Dapr sidecar
+  ############################
+  musicapi:
+    build:
+      context: ./
+      dockerfile: ./MusicAPI/Dockerfile
+    ports:
+      - "8081:80"
+    environment:
+      - DAPR_GRPC_PORT=50002
+      # depends_on:
+      #   - redis
+      - placement
+    networks:
+      - musicnet
+  musicapi-dapr:
+    image: "daprio/daprd:edge"
+    command:
+      [
+        "./daprd",
+        "-app-id",
+        "musicapi",
+        "-app-port",
+        "80",
+        "-placement-host-address",
+        "placement:50006",
+        "-dapr-grpc-port",
+        "50002",
+        "-components-path",
+        "/components",
+      ]
+    volumes:
+      - "./components/:/components"
+    depends_on:
+      - musicapi
+    network_mode: "service:musicapi"
+  ############################
+  # Dapr placement service
+  ############################
+  placement:
+    image: "daprio/dapr"
+    command: ["./placement", "-port", "50006"]
+    ports:
+      - "50006:50006"
+    networks:
+      - musicnet
+  ############################
+  # Redis state store
+  ############################
+  # redis:
+  #   image: "redis:alpine"
+  #   ports:
+  #     - "6380:6379"
+  #   networks:
+  #     - musicnet
+networks:
+  musicnet:

@@ -28,5 +28,11 @@ namespace MusicAPI
             _logger.LogTrace("GetAlbums invoked");
             return _albums;
         }
+
+        public IEnumerable<Album> GetAlbumsFromStare()
+        {
+            _logger.LogTrace("GetAlbums invoked");
+            return _albums;
+        }
     }
 }
