@@ -4,7 +4,7 @@ services:
   # Music Store Web App + Dapr sidecar
   ############################
   musicstoreweb:
-    image: bldxxl/musicstoreweb_dapr_state
+    image: bldxxl/musicstoreweb_dapr_pubsub
     build:
       context: ./
       dockerfile: ./MusicApp/Dockerfile
@@ -42,7 +42,7 @@ services:
   # Music API + Dapr sidecar
   ############################
   musicapi:
-    image: bldxxl/musicapi_dapr_state
+    image: bldxxl/musicapi_dapr_pubsub
     build:
       context: ./
       dockerfile: ./MusicAPI/Dockerfile
@@ -76,6 +76,85 @@ services:
     depends_on:
       - musicapi
     network_mode: "service:musicapi"
+  ############################
+  # Music Store Order Service + Dapr sidecar
+  ############################
+  orders-service:
+    image: bldxxl/orders-service_dapr_pubsub
+    build:
+      context: ./
+      dockerfile: ./OrdersService/Dockerfile
+    ports:
+      - "8082:80"
+      - "3500:3500"
+    environment:
+      - DAPR_GRPC_PORT=50002
+    depends_on:
+      - redis
+      - placement
+    networks:
+      - musicnet
+  orders-service-dapr:
+    image: "daprio/daprd:edge"
+    command:
+      [
+        "./daprd",
+        "-app-id",
+        "orderssvc",
+        "-app-port",
+        "80",
+        "-placement-host-address",
+        "placement:50006",
+        "-dapr-grpc-port",
+        "50002",
+        "-dapr-http-port",
+        "3500",
+        "-components-path",
+        "/components",
+      ]
+    volumes:
+      - "./components/:/components"
+    depends_on:
+      - orders-service
+    network_mode: "service:orders-service"
+  ############################
+  # Music Store Order Service + Dapr sidecar
+  ############################
+  communications-service:
+    image: bldxxl/communications-service_dapr_pubsub
+    build:
+      context: ./
+      dockerfile: ./CommsService/Dockerfile
+    ports:
+      - "8083:80"
+    environment:
+      - DAPR_GRPC_PORT=50002
+    depends_on:
+      - redis
+      - placement
+    networks:
+      - musicnet
+  communications-service-dapr:
+    image: "daprio/daprd:edge"
+    command:
+      [
+        "./daprd",
+        "-app-id",
+        "commssvc",
+        "-app-port",
+        "80",
+        "-placement-host-address",
+        "placement:50006",
+        "-dapr-grpc-port",
+        "50002",
+        "-components-path",
+        "/components",
+      ]
+    volumes:
+      - "./components/:/components"
+    depends_on:
+      - communications-service
+    network_mode: "service:communications-service"
   ############################
   # Dapr placement service
   ############################

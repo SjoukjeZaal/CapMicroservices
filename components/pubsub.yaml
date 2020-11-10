@@ -1,9 +1,9 @@
 apiVersion: dapr.io/v1alpha1
 kind: Component
 metadata:
-  name: music_store
+  name: musicstore_servicebus
 spec:
-  type: state.redis
+  type: pubsub.redis
   metadata:
     - name: redisHost
       value: redis:6379

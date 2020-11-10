@@ -1,4 +1,4 @@
-﻿@page 
+﻿@page
 @model AlbumsModel
 @{
     ViewData["Title"] = "Albums";
@@ -15,12 +15,13 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var book in @Model.Albums!)
+        @foreach (var album in @Model.Albums!)
         {
             <tr>
-                <td>@book.AlbumId</td>
-                <td>@book.Title</td>
-                <td>@book.Artist</td>
+                <td>@album.AlbumId</td>
+                <td>@album.Title</td>
+                <td>@album.Artist</td>
+                <td></td>
             </tr>
         }
     </tbody>
