@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MusicAPI.Controllers
 {
@@ -11,7 +12,6 @@ namespace MusicAPI.Controllers
             => _albumService = albumService;
 
         [HttpGet]
-        public IActionResult GetAlbums()
-            => Ok(_albumService.GetAlbums());
+        public async Task<IActionResult> GetAlbums() => Ok(await _albumService.GetAlbumsFromStateAsync());
     }
 }

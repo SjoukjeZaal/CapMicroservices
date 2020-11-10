@@ -1,8 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Dapr.Client;
+using Microsoft.Extensions.Logging;
 using Music.Shared;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace MusicAPI
@@ -10,9 +9,13 @@ namespace MusicAPI
     public class AlbumService : IAlbumService
     {
         private readonly ILogger _logger;
+        private readonly DaprClient _daprClient;
 
-        public AlbumService(ILogger<AlbumService> logger)
-            => _logger = logger;
+        public AlbumService(ILogger<AlbumService> logger, DaprClient daprClient)
+        {
+            _logger = logger;
+            _daprClient = daprClient;
+        }
 
         private List<Album> _albums = new List<Album>()
         {
@@ -29,10 +32,26 @@ namespace MusicAPI
             return _albums;
         }
 
-        public IEnumerable<Album> GetAlbumsFromStare()
+        public async Task<IEnumerable<Album>> GetAlbumsFromStateAsync()
         {
-            _logger.LogTrace("GetAlbums invoked");
-            return _albums;
+            _logger.LogInformation("GetAlbumsFromState invoked");
+
+            var albums = await _daprClient.GetStateAsync<IEnumerable<Album>>("albums_store", "albums");
+
+            _logger.LogInformation($"Call succeeded");
+
+            if (albums == null)
+            {
+                _logger.LogInformation("No albums found. Seeding state");
+
+                albums = _albums;
+
+                await _daprClient.SaveStateAsync("albums_store", "albums", albums);
+
+                _logger.LogInformation("State seeded");
+            }
+
+            return albums;
         }
     }
 }
