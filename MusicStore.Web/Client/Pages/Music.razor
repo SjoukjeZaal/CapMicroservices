@@ -1,0 +1,47 @@
+﻿@page "/music"
+@using MusicStore.Shared
+@inject HttpClient Http
+
+<h1>Music</h1>
+
+<p>These are the Albums we currently have for you.</p>
+
+<h1>Albums</h1>
+
+@if (albums == null)
+{
+    <p><em>Loading Albums...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Artist</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var album in albums)
+            {
+                <tr>
+                    <td>@album.AlbumId</td>
+                    <td>@album.Title</td>
+                    <td>@album.Artist</td>
+                    <td></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private IEnumerable<Album> albums;
+
+    protected override async Task OnInitializedAsync()
+    {
+        albums = await Http.GetFromJsonAsync<IEnumerable<Album>>("Albums");
+    }
+
+}
