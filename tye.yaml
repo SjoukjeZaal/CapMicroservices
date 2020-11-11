@@ -7,6 +7,15 @@
 name: capmicroservices
 services:
 - name: musicapi
-  project: MusicAPI/MusicAPI.csproj  
+  project: MusicAPI/MusicAPI.csproj
 - name: musicapp
   project: MusicApp/MusicApp.csproj
+ingress:
+  - name: ingress
+    bindings:
+      - port: 8080
+    rules:
+      - path: /A
+        service: musicapp
+      - path: /B
+        service: musicapi
