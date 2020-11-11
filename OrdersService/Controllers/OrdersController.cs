@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Threading;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Dapr;
 using Dapr.Client;
@@ -38,8 +39,13 @@ namespace OrdersService.Controllers
             var newOrder = new Order { Albums = albums };
             orders.Add(newOrder);
 
+            // Log order processed message to simulate processing
+            _logger.LogInformation($"Processing order {newOrder.Id}...");
+
             // save orders back into state
             await _daprClient.SaveStateAsync("music_store", "orders", orders);
+
+            Thread.Sleep(1000);
 
             // Log order processed message to simulate processing
             _logger.LogInformation($"Order {newOrder.Id} processed");

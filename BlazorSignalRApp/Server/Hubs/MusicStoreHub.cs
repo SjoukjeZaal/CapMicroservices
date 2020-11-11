@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR;
 
-namespace MusicStore.Web.Server.Hubs
+namespace BlazorSignalRApp.Server.Hubs
 {
     public class MusicStoreHub : Hub
     {

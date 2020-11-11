@@ -4,10 +4,10 @@ services:
   # Music Store Web App + Dapr sidecar
   ############################
   musicstoreweb:
-    image: bldxxl/musicstoreweb-blazor_dapr_pubsub
+    image: bldxxl/musicstoreweb-blazor-netcore-3.1_dapr_pubsub
     build:
-      context: ./
-      dockerfile: ./MusicStore.Web/Server/Dockerfile
+      context: ./BlazorSignalRApp
+      dockerfile: ./Server/Dockerfile
     ports:
       - "8080:80"
     environment:

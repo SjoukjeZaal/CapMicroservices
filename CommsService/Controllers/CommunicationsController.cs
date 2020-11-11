@@ -1,4 +1,5 @@
-﻿using System.Security.AccessControl;
+﻿using System.Threading;
+using System.Security.AccessControl;
 using Dapr;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -17,11 +18,13 @@ namespace CommsService.Controllers
         {
             _logger = logger;
         }
-        
+
         [Topic("musicstore_servicebus", "order_processed")]
         [HttpPost("email")]
         public IActionResult SendEmail(Order order)
         {
+            Thread.Sleep(1000);
+
             _logger.LogInformation($"Order {order.Id} with {order.Albums.Count()} was processed, this service will now send an e-mail to the customer");
             return Ok();
         }

@@ -1,4 +1,4 @@
-﻿namespace MusicStore.Shared
+﻿namespace BlazorSignalRApp.Shared
 {
     public class Album
     {

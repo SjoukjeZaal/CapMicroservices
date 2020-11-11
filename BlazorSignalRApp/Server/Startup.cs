@@ -1,3 +1,6 @@
+using System;
+using System.Runtime.Serialization;
+using System.Transactions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Hosting;
@@ -6,10 +9,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Linq;
-using System;
-using MusicStore.Web.Server.Hubs;
+using BlazorSignalRApp.Server.Hubs;
 
-namespace MusicStore.Web.Server
+namespace BlazorSignalRApp.Server
 {
     public class Startup
     {
@@ -38,13 +40,13 @@ namespace MusicStore.Web.Server
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            // app.Use(async (request, next) =>
-            //     {
-            //         Console.WriteLine("A call came in");
-            //         Console.WriteLine(request.Request.Method);
-            //         Console.WriteLine(request.Request.Path);
-            //         await next.Invoke();
-            //     });
+            app.Use(async (request, next) =>
+                {
+                    Console.WriteLine("A call came in");
+                    Console.WriteLine(request.Request.Method);
+                    Console.WriteLine(request.Request.Path);
+                    await next.Invoke();
+                });
 
             app.UseResponseCompression();
 
@@ -60,6 +62,8 @@ namespace MusicStore.Web.Server
                 app.UseHsts();
             }
 
+            // app.UseHttpsRedirection();
+
             app.UseBlazorFrameworkFiles();
 
             app.UseStaticFiles();
@@ -74,6 +78,7 @@ namespace MusicStore.Web.Server
                 endpoints.MapRazorPages();
                 endpoints.MapControllers();
                 endpoints.MapHub<MusicStoreHub>("/musicstorehub");
+                endpoints.MapHub<ChatHub>("/chathub");
                 endpoints.MapFallbackToFile("index.html");
             });
         }

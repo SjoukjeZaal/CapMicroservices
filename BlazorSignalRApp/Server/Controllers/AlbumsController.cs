@@ -3,13 +3,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.SignalR;
-using MusicStore.Web.Server.Hubs;
-using MusicStore.Shared;
+using BlazorSignalRApp.Server.Hubs;
+using BlazorSignalRApp.Shared;
 using Dapr.Client;
 using Dapr.Client.Http;
 using Dapr;
 
-namespace MusicStore.Web.Server.Controllers
+namespace BlazorSignalRApp.Server.Controllers
 {
     [ApiController]
     [Route("[controller]")]
