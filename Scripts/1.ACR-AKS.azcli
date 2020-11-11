@@ -9,7 +9,6 @@ aks_name=CapAKSCluster         						# Azure Container Registry registry name
 
 #acs_login_server=capcontainerregistry.azurecr.io    # ACS Login server
 
-
 ## PART 1: CREATE ACR
 
 az account set --subscription "Microsoft Azure Sponsorship"
@@ -20,12 +19,7 @@ az group create --name $res_group --location westeurope
 #create a container registry, admin enabled
 az acr create --resource-group $res_group --name $acr_name --sku Basic --admin-enabled true
 
-
 #Retrieve admin password from the Azure portal
-
-#Set admin credentials
-admin_username=SZContainerRegistry                  	# Admin username
-admin_password=/Nu8YMdTclNnelTQwNgUEJwJKQHePY=2         # Admin password
 
 ## END PART 1
 ## PART 2: Create the Azure AD enabled AKS Cluster
@@ -89,10 +83,8 @@ az role assignment create \
 #Retrieve the credentials
 az aks get-credentials --resource-group $res_group --name $aks_name --admin
 
-
 #Create a Dev namespace
 kubectl create namespace dev
-
 
 #In Kubernetes, Roles define the permissions to grant, and RoleBindings apply them to desired users or groups.
 
