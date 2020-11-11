@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Steeltoe.Management.Endpoint;
 
 namespace MusicAPI
 {
@@ -21,6 +22,8 @@ namespace MusicAPI
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                });
+                })
+                //Add Steeltoe Health Endpoint
+                .AddHealthActuator();    
     }
 }
