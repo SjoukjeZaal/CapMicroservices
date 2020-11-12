@@ -7,6 +7,6 @@ spec:
   metadata:
     - name: redisHost
       # TODO: Reset to redis:6370
-      value: localhost:6379
+      value: redis:6379
     - name: redisPassword
       value: ""
