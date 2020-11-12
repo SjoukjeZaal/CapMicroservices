@@ -4,6 +4,7 @@ services:
   # Music Store Web App + Dapr sidecar
   ############################
   musicstoreweb:
+    image: bldxxl/dapr_service_invocation_musicstoreweb
     build:
       context: ./
       dockerfile: ./MusicApp/Dockerfile
@@ -11,9 +12,8 @@ services:
       - "8080:80"
     environment:
       - DAPR_GRPC_PORT=50002
-    # depends_on:
-    # - redis
-    # - placement
+    depends_on:
+      - placement
     networks:
       - musicnet
   musicstoreweb-dapr:
@@ -41,6 +41,7 @@ services:
   # Music API + Dapr sidecar
   ############################
   musicapi:
+    image: bldxxl/dapr_service_invocation_musicapi
     build:
       context: ./
       dockerfile: ./MusicAPI/Dockerfile
@@ -48,8 +49,7 @@ services:
       - "8081:80"
     environment:
       - DAPR_GRPC_PORT=50002
-      # depends_on:
-      #   - redis
+    depends_on:
       - placement
     networks:
       - musicnet
@@ -84,14 +84,5 @@ services:
       - "50006:50006"
     networks:
       - musicnet
-  ############################
-  # Redis state store
-  ############################
-  # redis:
-  #   image: "redis:alpine"
-  #   ports:
-  #     - "6380:6379"
-  #   networks:
-  #     - musicnet
 networks:
   musicnet:

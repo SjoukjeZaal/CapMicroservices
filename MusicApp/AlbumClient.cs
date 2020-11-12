@@ -2,10 +2,7 @@
 using Dapr.Client.Http;
 using Microsoft.Extensions.Logging;
 using Music.Shared;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 
@@ -27,7 +24,7 @@ namespace MusicApp
             this.logger = logger;
         }
 
-        public async Task<Album[]> GetAlbumsAsync() => await _daprClient.InvokeMethodAsync<Album[]>("musicapi", "albums", new HTTPExtension { Verb = HTTPVerb.Get });
-
+        public async Task<IEnumerable<Album>> GetAlbumsAsync() =>
+            await _daprClient.InvokeMethodAsync<IEnumerable<Album>>("musicapi", "albums", new HTTPExtension { Verb = HTTPVerb.Get });
     }
 }

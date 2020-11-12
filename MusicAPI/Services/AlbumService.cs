@@ -1,9 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using Music.Shared;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MusicAPI
 {
@@ -24,12 +21,6 @@ namespace MusicAPI
         };
 
         public IEnumerable<Album> GetAlbums()
-        {
-            _logger.LogTrace("GetAlbums invoked");
-            return _albums;
-        }
-
-        public IEnumerable<Album> GetAlbumsFromStare()
         {
             _logger.LogTrace("GetAlbums invoked");
             return _albums;
