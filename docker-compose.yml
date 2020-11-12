@@ -4,7 +4,7 @@ services:
   # Music Store Web App + Dapr sidecar
   ############################
   musicstoreweb:
-    image: bldxxl/musicstoreweb_dapr_state
+    image: bldxxl/dapr_state_musicstoreweb
     build:
       context: ./
       dockerfile: ./MusicApp/Dockerfile
@@ -42,7 +42,7 @@ services:
   # Music API + Dapr sidecar
   ############################
   musicapi:
-    image: bldxxl/musicapi_dapr_state
+    image: bldxxl/dapr_state_musicapi
     build:
       context: ./
       dockerfile: ./MusicAPI/Dockerfile
