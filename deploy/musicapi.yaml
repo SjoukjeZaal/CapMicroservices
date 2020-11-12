@@ -1,0 +1,42 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: musicapi
+  labels:
+    app: musicapi
+spec:
+  selector:
+    app: musicapi
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: musicapi
+  labels:
+    app: musicapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: musicapi
+  template:
+    metadata:
+      labels:
+        app: musicapi
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "musicapi"
+        dapr.io/app-port: "80"
+    spec:
+      containers:
+        - name: musicapi
+          image: tyeacr.azurecr.io/musicapi_dapr_pubsub
+          ports:
+            - containerPort: 80
+          imagePullPolicy: Always

@@ -1,0 +1,42 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: musicstoreweb
+  labels:
+    app: musicstoreweb
+spec:
+  selector:
+    app: musicstoreweb
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: musicstoreweb
+  labels:
+    app: musicstoreweb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: musicstoreweb
+  template:
+    metadata:
+      labels:
+        app: musicstoreweb
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "musicstoreweb"
+        dapr.io/app-port: "80"
+    spec:
+      containers:
+        - name: musicstoreweb
+          image: tyeacr.azurecr.io/musicstoreweb-blazor-netcore-3.1_dapr_pubsub
+          ports:
+            - containerPort: 80
+          imagePullPolicy: Always

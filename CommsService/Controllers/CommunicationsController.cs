@@ -19,7 +19,7 @@ namespace CommsService.Controllers
             _logger = logger;
         }
 
-        [Topic("musicstore_servicebus", "order_processed")]
+        [Topic("musicstore-servicebus", "order_processed")]
         [HttpPost("email")]
         public IActionResult SendEmail(Order order)
         {

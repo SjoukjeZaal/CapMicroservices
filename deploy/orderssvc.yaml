@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ordersvc
+  labels:
+    app: ordersvc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ordersvc
+  template:
+    metadata:
+      labels:
+        app: ordersvc
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "ordersvc"
+        dapr.io/app-port: "80"
+    spec:
+      containers:
+        - name: ordersvc
+          image: tyeacr.azurecr.io/orders-service_dapr_pubsub
+          ports:
+            - containerPort: 80
+          imagePullPolicy: Always

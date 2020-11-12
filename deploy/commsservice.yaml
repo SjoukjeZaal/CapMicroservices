@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: commssvc
+  labels:
+    app: commssvc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: commssvc
+  template:
+    metadata:
+      labels:
+        app: commssvc
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "commssvc"
+        dapr.io/app-port: "80"
+    spec:
+      containers:
+        - name: commssvc
+          image: tyeacr.azurecr.io/communications-service_dapr_pubsub
+          ports:
+            - containerPort: 80
+          imagePullPolicy: Always

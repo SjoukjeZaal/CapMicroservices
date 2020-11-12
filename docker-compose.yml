@@ -4,7 +4,7 @@ services:
   # Music Store Web App + Dapr sidecar
   ############################
   musicstoreweb:
-    image: bldxxl/musicstoreweb-blazor-netcore-3.1_dapr_pubsub
+    image: tyeacr.azurecr.io/musicstoreweb-blazor-netcore-3.1_dapr_pubsub
     build:
       context: ./BlazorSignalRApp
       dockerfile: ./Server/Dockerfile
@@ -42,7 +42,7 @@ services:
   # Music API + Dapr sidecar
   ############################
   musicapi:
-    image: bldxxl/musicapi_dapr_pubsub
+    image: tyeacr.azurecr.io/musicapi_dapr_pubsub
     build:
       context: ./
       dockerfile: ./MusicAPI/Dockerfile
@@ -80,7 +80,7 @@ services:
   # Music Store Order Service + Dapr sidecar
   ############################
   orders-service:
-    image: bldxxl/orders-service_dapr_pubsub
+    image: tyeacr.azurecr.io/orders-service_dapr_pubsub
     build:
       context: ./
       dockerfile: ./OrdersService/Dockerfile
@@ -121,7 +121,7 @@ services:
   # Music Store Order Service + Dapr sidecar
   ############################
   communications-service:
-    image: bldxxl/communications-service_dapr_pubsub
+    image: tyeacr.azurecr.io/communications-service_dapr_pubsub
     build:
       context: ./
       dockerfile: ./CommsService/Dockerfile

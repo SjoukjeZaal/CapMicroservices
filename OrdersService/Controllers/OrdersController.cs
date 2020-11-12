@@ -22,14 +22,14 @@ namespace OrdersService.Controllers
             _daprClient = daprClient;
         }
 
-        [Topic("musicstore_servicebus", "order_albums")]
+        [Topic("musicstore-servicebus", "order_albums")]
         [HttpPost]
         public async Task<IActionResult> CreateOrder(IEnumerable<Album> albums)
         {
             // TODO: We could move this to an inventory/catalog microservice?
             // TODO: Move statestore name (+ key to configuration and use IOptions<T>)
             // get orders from state to determine the next id
-            var orders = await _daprClient.GetStateAsync<List<Order>>("music_store", "orders");
+            var orders = await _daprClient.GetStateAsync<List<Order>>("music-store", "orders");
 
             if (orders == null)
             {
@@ -43,7 +43,7 @@ namespace OrdersService.Controllers
             _logger.LogInformation($"Processing order {newOrder.Id}...");
 
             // save orders back into state
-            await _daprClient.SaveStateAsync("music_store", "orders", orders);
+            await _daprClient.SaveStateAsync("music-store", "orders", orders);
 
             Thread.Sleep(1000);
 
@@ -51,7 +51,7 @@ namespace OrdersService.Controllers
             _logger.LogInformation($"Order {newOrder.Id} processed");
 
             // Send message to topic to notify anyone else about the order successfully being processed
-            await _daprClient.PublishEventAsync("musicstore_servicebus", "order_processed", newOrder);
+            await _daprClient.PublishEventAsync("musicstore-servicebus", "order_processed", newOrder);
 
             return Ok();
         }

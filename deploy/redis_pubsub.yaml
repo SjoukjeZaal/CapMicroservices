@@ -6,7 +6,8 @@ spec:
   type: pubsub.redis
   metadata:
     - name: redisHost
-      # TODO: Reset to redis:6370
-      value: localhost:6379
+      value: redis-master.default.svc.cluster.local:6379
     - name: redisPassword
-      value: ""
+      secretKeyRef:
+        name: redis
+        key: redis-password

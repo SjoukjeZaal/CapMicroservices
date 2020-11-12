@@ -36,7 +36,7 @@ namespace MusicAPI
         {
             _logger.LogInformation("GetAlbumsFromState invoked");
 
-            var albums = await _daprClient.GetStateAsync<IEnumerable<Album>>("music_store", "albums");
+            var albums = await _daprClient.GetStateAsync<IEnumerable<Album>>("music-store", "albums");
 
             _logger.LogInformation($"Call succeeded");
 
@@ -46,7 +46,7 @@ namespace MusicAPI
 
                 albums = _albums;
 
-                await _daprClient.SaveStateAsync("music_store", "albums", albums);
+                await _daprClient.SaveStateAsync("music-store", "albums", albums);
 
                 _logger.LogInformation("State seeded");
             }

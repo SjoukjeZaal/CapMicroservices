@@ -40,11 +40,11 @@ namespace MusicStore.Web.Server.Controllers
         public async Task<IActionResult> Order(Album album)
         {
             logger.LogInformation("Ordering album now");
-            await daprClient.PublishEventAsync("musicstore_servicebus", "order_albums", new List<Album> { album });
+            await daprClient.PublishEventAsync("musicstore-servicebus", "order_albums", new List<Album> { album });
             return Ok();
         }
 
-        [Topic("musicstore_servicebus", "order_processed")]
+        [Topic("musicstore-servicebus", "order_processed")]
         [HttpPost("notifyOrderProcessed")]
         public async Task<IActionResult> NotifyOrderProcessed(Order order)
         {
