@@ -32,9 +32,12 @@ services:
         "50002",
         "-components-path",
         "/components",
+        "-config",
+        "/dapr_config/config.yaml",
       ]
     volumes:
       - "./components/:/components"
+      - "./config.yaml:/dapr_config/config.yaml"
     depends_on:
       - musicstoreweb
     network_mode: "service:musicstoreweb"
@@ -70,9 +73,12 @@ services:
         "50002",
         "-components-path",
         "/components",
+        "-config",
+        "/dapr_config/config.yaml",
       ]
     volumes:
       - "./components/:/components"
+      - "./config.yaml:/dapr_config/config.yaml"
     depends_on:
       - musicapi
     network_mode: "service:musicapi"
@@ -111,9 +117,12 @@ services:
         "3500",
         "-components-path",
         "/components",
+        "-config",
+        "/dapr_config/config.yaml",
       ]
     volumes:
       - "./components/:/components"
+      - "./config.yaml:/dapr_config/config.yaml"
     depends_on:
       - orders-service
     network_mode: "service:orders-service"
@@ -149,9 +158,12 @@ services:
         "50002",
         "-components-path",
         "/components",
+        "-config",
+        "/dapr_config/config.yaml",
       ]
     volumes:
       - "./components/:/components"
+      - "./config.yaml:/dapr_config/config.yaml"
     depends_on:
       - communications-service
     network_mode: "service:communications-service"
@@ -172,6 +184,15 @@ services:
     image: "redis:alpine"
     ports:
       - "6380:6379"
+    networks:
+      - musicnet
+  ############################
+  # Zipkin
+  ############################
+  zipkin:
+    image: "openzipkin/zipkin"
+    ports:
+      - "9412:9411"
     networks:
       - musicnet
 networks:
