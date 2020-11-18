@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace MusicStore.Shared
+namespace MusicStore.Web.Shared
 {
     public class Order
     {

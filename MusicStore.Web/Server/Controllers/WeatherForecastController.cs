@@ -1,10 +1,11 @@
-﻿using System;
+﻿using MusicStore.Web.Shared;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using MusicStore.Web.Shared;
+using Microsoft.AspNetCore.SignalR;
+using MusicStore.Web.Server.Hubs;
 
 namespace MusicStore.Web.Server.Controllers
 {
@@ -17,11 +18,15 @@ namespace MusicStore.Web.Server.Controllers
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
-        private readonly ILogger<WeatherForecastController> _logger;
+        private readonly ILogger<WeatherForecastController> logger;
+        private readonly IHubContext<ChatHub> hubContext;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(
+            ILogger<WeatherForecastController> logger,
+             IHubContext<ChatHub> hubContext)
         {
-            _logger = logger;
+            this.hubContext = hubContext;
+            this.logger = logger;
         }
 
         [HttpGet]

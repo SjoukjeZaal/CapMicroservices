@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR;
 
-namespace BlazorSignalRApp.Server.Hubs
+namespace MusicStore.Web.Server.Hubs
 {
     public class ChatHub : Hub
     {

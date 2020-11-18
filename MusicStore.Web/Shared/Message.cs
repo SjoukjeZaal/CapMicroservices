@@ -1,4 +1,4 @@
-namespace BlazorSignalRApp.Shared
+namespace MusicStore.Web.Shared
 {
     public class Message
     {

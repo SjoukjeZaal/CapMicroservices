@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.SignalR;
 using MusicStore.Web.Server.Hubs;
-using MusicStore.Shared;
+using MusicStore.Web.Shared;
 using Dapr.Client;
 using Dapr.Client.Http;
 using Dapr;

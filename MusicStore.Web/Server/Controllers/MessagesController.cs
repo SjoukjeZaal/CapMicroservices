@@ -7,10 +7,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.SignalR;
 using Dapr;
-using BlazorSignalRApp.Server.Hubs;
-using BlazorSignalRApp.Shared;
+using MusicStore.Web.Server.Hubs;
+using MusicStore.Web.Shared;
 
-namespace BlazorSignalRApp.Server.Controllers
+namespace MusicStore.Web.Server.Controllers
 {
     [ApiController]
     public class MessagesController : ControllerBase

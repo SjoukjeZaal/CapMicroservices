@@ -1,9 +1,9 @@
 ﻿@page "/music"
-@using MusicStore.Shared
-@* @using Microsoft.AspNetCore.SignalR.Client *@
-@* @inject NavigationManager NavigationManager *@
+@using MusicStore.Web.Shared
+@using Microsoft.AspNetCore.SignalR.Client
+@inject NavigationManager NavigationManager
 @inject HttpClient Http
-@* @implements IDisposable *@
+@implements IDisposable
 
 <h1>Music</h1>
 
@@ -11,6 +11,10 @@
 
 <h1>Albums</h1>
 
+@if (OrderProcessed)
+{
+    <p>Order was processed!</p>
+}
 @if (albums == null)
 {
     <p><em>Loading Albums...</em></p>
@@ -47,13 +51,37 @@ else
 }
 
 @code {
-    @* private HubConnection hubConnection; *@
+    private HubConnection hubConnection;
     private IEnumerable<Album> albums;
     private bool OrderProcessed = false;
 
     protected override async Task OnInitializedAsync()
     {
         albums = await Http.GetFromJsonAsync<IEnumerable<Album>>("Albums");
+
+        hubConnection = new HubConnectionBuilder()
+            .WithUrl(NavigationManager.ToAbsoluteUri("/musicstorehub"))
+        .Build();
+
+        hubConnection.On<IEnumerable<Album>>("OrderProcessed", boughtAlbums =>
+        {
+            // TODO: Do this in a much cooler way
+            foreach (var album in albums)
+            {
+                foreach (var boughtAlbum in boughtAlbums)
+                {
+                    if (album.AlbumId == boughtAlbum.AlbumId)
+                    {
+                        album.ProcessingOrder = false;
+                    }
+                }
+            }
+
+            OrderProcessed = true;
+            StateHasChanged();
+        });
+
+        await hubConnection.StartAsync();
     }
 
     private async Task OrderAlbum(Album album)
@@ -61,5 +89,10 @@ else
         await Http.PostAsJsonAsync("Albums", album);
         album.ProcessingOrder = true;
         StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        _ = hubConnection.DisposeAsync();
     }
 }
