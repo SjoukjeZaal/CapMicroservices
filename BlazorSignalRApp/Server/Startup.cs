@@ -40,14 +40,6 @@ namespace BlazorSignalRApp.Server
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.Use(async (request, next) =>
-                {
-                    Console.WriteLine("A call came in");
-                    Console.WriteLine(request.Request.Method);
-                    Console.WriteLine(request.Request.Path);
-                    await next.Invoke();
-                });
-
             app.UseResponseCompression();
 
             if (env.IsDevelopment())

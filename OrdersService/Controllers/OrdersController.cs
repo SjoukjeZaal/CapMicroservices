@@ -48,7 +48,7 @@ namespace OrdersService.Controllers
             Thread.Sleep(1000);
 
             // Log order processed message to simulate processing
-            _logger.LogInformation($"Order {newOrder.Id} processed");
+            _logger.LogInformation($"Order {newOrder.Id} processed, notifying anyone who is listening out there...");
 
             // Send message to topic to notify anyone else about the order successfully being processed
             await _daprClient.PublishEventAsync("musicstore-servicebus", "order_processed", newOrder);

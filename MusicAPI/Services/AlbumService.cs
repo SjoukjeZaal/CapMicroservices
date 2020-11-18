@@ -38,8 +38,6 @@ namespace MusicAPI
 
             var albums = await _daprClient.GetStateAsync<IEnumerable<Album>>("music-store", "albums");
 
-            _logger.LogInformation($"Call succeeded");
-
             if (albums == null)
             {
                 _logger.LogInformation("No albums found. Seeding state");
@@ -50,6 +48,8 @@ namespace MusicAPI
 
                 _logger.LogInformation("State seeded");
             }
+
+            _logger.LogInformation($"Albums found in cache, here they come!");
 
             return albums;
         }
