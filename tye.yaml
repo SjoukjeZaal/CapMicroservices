@@ -15,7 +15,7 @@ ingress:
     bindings:
       - port: 8080
     rules:
-      - path: /A
+      - path: /
         service: musicapp
-      - path: /B
+      - path: /musicapi
         service: musicapi
